@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Typography, Card, CardContent } from "@mui/material";
-import Carousel from "react-elastic-carousel";
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+// import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import WindowSize from "../WindowSize";
 
 function CardCarousel() {
@@ -49,12 +50,12 @@ function CardCarousel() {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
     },
   ];
-  const breakPoints = [
-    { width: 1, itemsToShow: 1 },
-    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
-    { width: 768, itemsToShow: 3 },
-    { width: 1200, itemsToShow: 4 },
-  ];
+  // const breakPoints = [
+  //   { width: 1, itemsToShow: 1 },
+  //   { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+  //   { width: 768, itemsToShow: 3 },
+  //   { width: 1200, itemsToShow: 4 },
+  // ];
 
   return (
     <div>
@@ -75,7 +76,7 @@ function CardCarousel() {
             </Typography>
           </div>
           <div style={{ marginTop: "50px",}}>
-            <Carousel breakPoints={breakPoints} renderArrow={myArrow}>
+            <Carousel showArrows={true} showThumbs={false}>
               {testimonials.map((testimonial) => (
                 <Card
                   key={testimonial.id}
@@ -83,6 +84,7 @@ function CardCarousel() {
                     width: "300px",
                     margin: "0 10px",
                     cursor: "pointer",
+                    backgroundColor: "#C2278E",
                     fill: hoveredCard === testimonial.id ? "#C2278E" : "#fff",
                     filter:
                       hoveredCard === testimonial.id
@@ -161,8 +163,8 @@ function CardCarousel() {
               What our clients say about us
             </Typography>
           </div>
-          <div style={{ marginTop: "50px", width: "80%", marginLeft: "10%" }}>
-            <Carousel breakPoints={breakPoints} renderArrow={myArrow}>
+          <div style={{ marginTop: "50px", width: "20%",marginLeft: '40%' }}>
+            <Carousel showArrows={true} showThumbs={false}>
               {testimonials.map((testimonial) => (
                 <Card
                   key={testimonial.id}
@@ -240,21 +242,21 @@ function CardCarousel() {
   );
 }
 
-const myArrow = ({ type, onClick, isEdge }) => {
-  const pointer = type === "PREV" ? <BsChevronLeft /> : <BsChevronRight />;
-  return (
-    <button
-      onClick={onClick}
-      disabled={isEdge}
-      style={{
-        backgroundColor: "transparent",
-        border: "none",
-        cursor: "pointer",
-      }}
-    >
-      {pointer}
-    </button>
-  );
-};
+// const myArrow = ({ type, onClick, isEdge }) => {
+//   const pointer = type === "PREV" ? <BsChevronLeft /> : <BsChevronRight />;
+//   return (
+//     <button
+//       onClick={onClick}
+//       disabled={isEdge}
+//       style={{
+//         backgroundColor: "transparent",
+//         border: "none",
+//         cursor: "pointer",
+//       }}
+//     >
+//       {pointer}
+//     </button>
+//   );
+// };
 
 export default CardCarousel;
